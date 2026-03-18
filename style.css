@@ -232,16 +232,16 @@ body::before {
 }
 
 /* Link Borders */
-.github   { border-bottom: 4px solid #a6d189; } /* Green */
-.youtube  { border-bottom: 4px solid #ea999c; } /* Red */
-.twitter  { border-bottom: 4px solid #8caaee; } /* Blue */
-.tiktok   { border-bottom: 4px solid #f4b8e4; } /* Pink */
-.discord  { border-bottom: 4px solid #babbf1; } /* Lavender */
-.bluesky  { border-bottom: 4px solid #85c1dc; } /* Sapphire */
-.spotify  { border-bottom: 4px solid #81c8be; } /* Teal */
-.modrinth { border-bottom: 4px solid #f9e2af; } /* Yellow */
-.curseforge { border-bottom: 4px solid #f38ba8; } /* Maroon */
-.twitch   { border-bottom: 4px solid #a6e3a1; } /* Green */
+.github     { border-bottom: 4px solid #f9e2af; } /* Yellow */
+.youtube    { border-bottom: 4px solid #f38ba8; } /* Red */
+.twitter    { border-bottom: 4px solid #f5e0dc; } /* Rosewater */
+.tiktok     { border-bottom: 4px solid #f5c2e7; } /* Pink */
+.discord    { border-bottom: 4px solid #89b4fa; } /* Blue */
+.bluesky    { border-bottom: 4px solid #74c7ec; } /* Sapphire */
+.spotify    { border-bottom: 4px solid #a6e3a1; } /* Green */
+.modrinth   { border-bottom: 4px solid #a6e3a1; } /* Green */
+.curseforge { border-bottom: 4px solid #f9e2af; } /* Yellow */
+.twitch     { border-bottom: 4px solid #eba0ac; } /* Maroon*/
 
 /* --- Projects Grid --- */
 .projects-grid {
