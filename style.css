@@ -1,9 +1,9 @@
+/* Base Theme */
 body {
-    /* Deep blue gradient background */
-    background: radial-gradient(circle at top right, #1e3a8a, #0f172a);
+    background: radial-gradient(circle at top right, #1e3a8a, #020617);
     background-attachment: fixed;
-    color: #e2e8f0;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #f1f5f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     justify-content: center;
     padding: 20px;
@@ -14,6 +14,7 @@ body {
 .container {
     width: 100%;
     max-width: 450px;
+    margin-top: 20px;
 }
 
 /* Tabs */
@@ -31,18 +32,18 @@ body {
     padding: 12px 35px;
     border-radius: 12px;
     cursor: pointer;
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
+    backdrop-filter: blur(8px);
+    transition: 0.2s;
 }
 
 .tab-btn.active {
-    background: rgba(56, 189, 248, 0.2);
-    border: 1px solid rgba(56, 189, 248, 0.5);
+    background: rgba(56, 189, 248, 0.15);
+    border: 1px solid rgba(56, 189, 248, 0.4);
     color: #7dd3fc;
-    box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+    font-weight: bold;
 }
 
-/* Profile Header */
+/* Profile */
 .profile-header {
     display: flex;
     align-items: center;
@@ -53,61 +54,74 @@ body {
 .avatar {
     width: 110px;
     height: 110px;
-    border-radius: 20px;
+    border-radius: 22px;
     object-fit: cover;
-    border: 2px solid rgba(56, 189, 248, 0.4);
-    /* This adds the acrylic glow effect to the pfp */
-    box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+    border: 2px solid rgba(56, 189, 248, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
-h1 {
-    font-size: 2.2rem;
-    color: #f8fafc;
-    margin: 0;
-    text-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
-}
+h1 { font-size: 2.2rem; color: #ffffff; margin: 0; }
+.tagline { color: #7dd3fc; margin-top: 4px; }
 
-.tagline {
-    color: #7dd3fc;
-    margin-top: 5px;
-    font-weight: 500;
-}
-
-/* Acrylic Card */
+/* Info Card */
 .acrylic-card {
-    background: rgba(15, 23, 42, 0.6);
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(56, 189, 248, 0.2);
+    background: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 24px;
     padding: 30px;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    margin-bottom: 25px;
 }
 
-.info-list p {
-    margin: 12px 0;
-    color: #cbd5e1;
-}
-
-.cyan-text { color: #22d3ee; margin-top: 0; }
-.light-blue { color: #7dd3fc; font-weight: bold; }
+.info-list p { margin: 12px 0; color: #cbd5e1; }
+.cyan-text { color: #22d3ee; margin-top: 0; font-size: 1.4rem; }
+.light-blue { color: #7dd3fc; font-weight: 600; }
 .white-text { color: #ffffff; }
+.urgent-text { color: #38bdf8; font-size: 0.8rem; margin-top: 25px; opacity: 0.6; }
 
-.urgent-text { 
-    color: #38bdf8; 
-    font-size: 0.75rem; 
-    margin-top: 25px; 
-    opacity: 0.7;
-    letter-spacing: 1px;
+/* Links Section */
+.links-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
-/* Project Cards */
+.link-btn {
+    display: block;
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(10px);
+    text-decoration: none;
+    color: #e2e8f0;
+    padding: 16px;
+    text-align: center;
+    border-radius: 14px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.link-btn:hover {
+    background: rgba(51, 65, 85, 0.9);
+    transform: scale(1.02);
+}
+
+/* Unique Bottom Border Colors */
+.github   { border-bottom: 4px solid #fbbf24; }
+.youtube  { border-bottom: 4px solid #f87171; }
+.twitter  { border-bottom: 4px solid #60a5fa; }
+.tiktok   { border-bottom: 4px solid #2dd4bf; }
+.discord  { border-bottom: 4px solid #818cf8; }
+.bluesky  { border-bottom: 4px solid #3b82f6; }
+.spotify  { border-bottom: 4px solid #1ed760; }
+
+/* Project Card */
 .project-card {
     background: rgba(15, 23, 42, 0.6);
     backdrop-filter: blur(16px);
     border-radius: 20px;
-    padding: 15px;
-    margin-bottom: 20px;
+    padding: 16px;
     border: 1px solid rgba(56, 189, 248, 0.1);
     border-bottom: 4px solid #38bdf8;
 }
@@ -116,7 +130,8 @@ h1 {
     width: 100%;
     border-radius: 12px;
     margin-bottom: 15px;
+    display: block;
 }
 
-.project-card h2 { margin: 10px 0 5px 0; color: #f1f5f9; }
-.project-card p { color: #94a3b8; font-size: 0.95rem; }
+.project-card h2 { margin: 10px 0 5px 0; color: #f8fafc; font-size: 1.4rem; }
+.project-card p { color: #94a3b8; font-size: 0.95rem; line-height: 1.5; }
