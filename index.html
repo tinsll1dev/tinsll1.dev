@@ -81,15 +81,29 @@
         </section>
     </div>
 
-    <script>
-        function showTab(tabId) {
-            document.querySelectorAll('.content-section').forEach(s => s.style.display = 'none');
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById(tabId).style.display = 'block';
-            if(event && event.currentTarget) {
-                event.currentTarget.classList.add('active');
-            }
+<script>
+    function showTab(tabId) {
+        // 1. Hide all sections and remove active class from buttons
+        document.querySelectorAll('.content-section').forEach(s => s.style.display = 'none');
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        
+        // 2. Show the selected section
+        const targetSection = document.getElementById(tabId);
+        if (targetSection) {
+            targetSection.style.display = 'block';
         }
-    </script>
+        
+        // 3. THE FIX: Scroll the window back to the absolute top
+        window.scrollTo({
+            top: 0,
+            behavior: 'instant' // 'instant' prevents the page from 'sliding' up weirdly during the tab swap
+        });
+
+        // 4. Update the button styling
+        if(event && event.currentTarget) {
+            event.currentTarget.classList.add('active');
+        }
+    }
+</script>
 </body>
 </html>

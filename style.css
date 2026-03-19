@@ -21,37 +21,113 @@
     --ctp-crust: #11111b;
 }
 
-/* --- Base Theme (Scale Fix) --- */
+/* --- Global Fixes --- */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 110px; 
+}
+
+/* --- Custom Scrollbar --- */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--ctp-crust);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--ctp-surface1);
+    border-radius: 10px;
+    border: 2px solid var(--ctp-crust);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--ctp-lavender);
+}
+
+/* --- Base Theme --- */
 body {
     background: radial-gradient(circle at top right, var(--ctp-base), var(--ctp-crust));
     background-attachment: fixed;
     background-size: cover; 
     color: var(--ctp-text);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     display: flex;
     justify-content: center;
-    padding: 40px 20px; 
+    /* Reduced top padding to prevent initial jump */
+    padding: 10px 20px 40px 20px; 
     margin: 0;
     min-height: 100vh;
     width: 100%;
     box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 .container {
     width: 95%; 
     max-width: 1100px; 
     margin: 0 auto;
-    transition: all 0.4s ease;
 }
 
-/* --- NEW: Centering the Section Headers (Home/Projects) --- */
+/* --- FIXED Animation (No vertical jump) --- */
+.content-section {
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* --- Section Headers (Centered) --- */
 .section-title {
     text-align: center;
     width: 100%;
-    margin-bottom: 30px;
+    margin: 30px 0 30px 0;
+    font-size: 2.5rem;
+    color: var(--ctp-lavender);
+    text-shadow: 0 0 20px rgba(180, 190, 254, 0.2);
 }
 
-/* --- Profile Header (Centered Row) --- */
+/* --- Floating Sticky Rounded Navigation --- */
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 10px 15px;
+    position: sticky;
+    top: 15px; /* Pulls it slightly closer to top */
+    z-index: 1000;
+    background: rgba(30, 30, 46, 0.75); 
+    backdrop-filter: blur(15px) saturate(160%); 
+    border: 1px solid var(--ctp-surface1);
+    border-radius: 50px; 
+    width: fit-content;
+    margin: 0 auto 40px auto; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.tab-btn {
+    background: rgba(49, 50, 68, 0.6); 
+    border: 1px solid transparent;
+    color: var(--ctp-subtext1);
+    padding: 10px 25px;
+    border-radius: 40px; 
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+    background: var(--ctp-surface1);
+    color: #fff;
+}
+
+.tab-btn.active {
+    background: var(--ctp-blue);
+    color: var(--ctp-base); 
+    box-shadow: 0 0 15px rgba(137, 180, 250, 0.3);
+}
+
+/* --- Profile Header --- */
 .profile-header {
     display: flex;
     flex-direction: row; 
@@ -61,7 +137,6 @@ body {
     margin-bottom: 50px;
 }
 
-/* Matches your HTML class */
 .header-text {
     text-align: center; 
 }
@@ -72,52 +147,31 @@ body {
     border-radius: 24px;
     object-fit: cover;
     border: 3px solid var(--ctp-lavender);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.avatar:hover {
+    transform: scale(1.08) rotate(2deg);
 }
 
 h1 { font-size: 2.8rem; color: #ffffff; margin: 0; }
 .tagline { color: var(--ctp-sky); margin-top: 8px; font-size: 1.2rem; }
 
-/* --- Navigation Tabs --- */
-.tabs {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 40px;
-}
-
-.tab-btn {
-    background: rgba(49, 50, 68, 0.7); 
-    border: 1px solid var(--ctp-surface1);
-    color: var(--ctp-subtext1);
-    padding: 14px 45px;
-    border-radius: 15px;
-    cursor: pointer;
-    backdrop-filter: blur(10px);
-    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.tab-btn.active {
-    background: rgba(137, 180, 250, 0.2);
-    border: 1px solid var(--ctp-blue);
-    color: var(--ctp-blue);
-    transform: translateY(-2px);
-}
-
-/* --- Acrylic Card (Scaling) --- */
+/* --- Acrylic Card --- */
 .acrylic-card {
     width: 100%;
     box-sizing: border-box;
-    background: rgba(30, 30, 46, 0.75);
+    background: rgba(30, 30, 46, 0.6);
     backdrop-filter: blur(20px) saturate(180%);
-    border: 1px solid var(--ctp-surface1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 30px;
     padding: 40px;
     text-align: center;
     margin-bottom: 30px;
 }
 
-/* --- Links Container (Grid for scaling) --- */
+/* --- Links Grid & Hover Glows --- */
 .links-container {
     display: grid;
     grid-template-columns: 1fr; 
@@ -127,26 +181,25 @@ h1 { font-size: 2.8rem; color: #ffffff; margin: 0; }
 
 .link-btn {
     display: block;
-    background: rgba(49, 50, 68, 0.85);
+    background: rgba(49, 50, 68, 0.6);
     backdrop-filter: blur(10px);
     text-decoration: none;
     color: var(--ctp-text);
     padding: 18px;
     text-align: center;
     border-radius: 16px;
-    font-size: 1.15rem;
-    font-weight: 500;
-    transition: all 0.2s ease;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .link-btn:hover {
-    background: var(--ctp-surface1);
+    background: rgba(69, 71, 90, 0.8);
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-/* Link Border Colors */
+/* Link Accents */
 .modrinth   { border-bottom: 4px solid var(--ctp-green); }
 .curseforge { border-bottom: 4px solid var(--ctp-yellow); }
 .twitch     { border-bottom: 4px solid var(--ctp-pink); }
@@ -158,11 +211,12 @@ h1 { font-size: 2.8rem; color: #ffffff; margin: 0; }
 .bluesky    { border-bottom: 4px solid var(--ctp-sapphire); }
 .spotify    { border-bottom: 4px solid var(--ctp-green); }
 
-/* --- Projects Grid (Scaling to 3 columns on wide screens) --- */
+/* --- Projects Grid --- */
 .projects-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 25px;
+    margin-bottom: 50px;
 }
 
 .project-card {
@@ -172,12 +226,13 @@ h1 { font-size: 2.8rem; color: #ffffff; margin: 0; }
     border-radius: 28px;
     padding: 20px;
     border-bottom: 5px solid var(--ctp-sky);
-    transition: 0.3s;
-    text-align: center; /* Centers the text inside project cards */
+    transition: 0.4s ease;
+    text-align: center;
 }
 
 .project-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4);
 }
 
 .project-img {
@@ -187,29 +242,19 @@ h1 { font-size: 2.8rem; color: #ffffff; margin: 0; }
     display: block;
 }
 
-/* --- RESPONSIBILITY / SCALING MODE --- */
+/* --- Responsive Breakpoints --- */
 @media (min-width: 768px) {
-    .links-container {
-        grid-template-columns: repeat(2, 1fr); 
-    }
-    .projects-grid {
-        grid-template-columns: repeat(2, 1fr); 
-    }
+    .links-container { grid-template-columns: repeat(2, 1fr); }
+    .projects-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (min-width: 1024px) {
-    .projects-grid {
-        grid-template-columns: repeat(3, 1fr); 
-    }
+    .projects-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 500px) {
-    .profile-header {
-        flex-direction: column;
-        text-align: center;
-    }
-    .header-text {
-        text-align: center;
-    }
+    .profile-header { flex-direction: column; text-align: center; }
     h1 { font-size: 2.2rem; }
+    .tabs { width: 95%; gap: 8px; }
+    .tab-btn { padding: 10px 15px; font-size: 0.85rem; }
 }
